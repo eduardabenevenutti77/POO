@@ -76,6 +76,7 @@ public class MenuAtividades {
                 System.out.println("\n---------------------------------");
 
                 case 5:
+                double x1,x2;
                 System.out.println("\n---------------------------------");
                 System.out.println("\nCalcule baskhara");
                 System.out.println("Informe o valor de A: ");
@@ -85,10 +86,92 @@ public class MenuAtividades {
                 System.out.println("Informe o valor de C: ");
                 int valorC = sc.nextInt();
 
-                int delta = (valorB*2)-4*valorA*valorC;
-                int RaizDelta
+                int delta = (valorB*2)+(4*(valorA*valorC));
+                System.out.println("O valor de delta = "+delta);
+                
+                if(delta>=0){
+                    x1 = ((-(valorB)+Math.sqrt(delta))/2*valorA);
+                    x2 = ((-(valorB)-Math.sqrt(delta))/2*valorA);
 
-            default:
+                    System.out.println("x1 = "+x1);
+                    System.out.println("x2 = "+x2);
+                
+                }else{
+                    System.out.println("O valor de delta não possui raiz!");
+                }
+                System.out.println("\n---------------------------------");  
+
+                case 6:
+                int soma=0;
+                System.out.println("\n---------------------------------");
+                System.out.println("\nCalcule a soma de todos o números ímpares que são múltiplos de 7 que existem entre 1 à 500");
+                for(int i=1;i<=500;i++){
+                    if(i%7==0){
+                        soma +=i;
+                    }
+                }
+                System.out.println("A soma dos números ímpares que são múltiplos de 7 = "+soma);
+                System.out.println("\n---------------------------------");  
+
+                case 7:
+                System.out.println("\n---------------------------------");
+                System.out.println("\nCalcule a média de um(a) aluno(a)");
+
+                System.out.println("Informe ao sistema o valor da 1ª prova ");
+                int prova1 = sc.nextInt();
+                if(prova1<0){
+                    System.out.println("Valor digitado incorretamente ;)");
+                    System.exit(0);
+                }
+                System.out.println("Informe ao sistema o valor da 2ª prova ");
+                int prova2 = sc.nextInt();
+                if(prova2<0){
+                    System.out.println("Valor digitado incorretamente ;)");
+                    System.exit(0);
+                }
+                System.out.println("Informe ao sistema o valor da 3ª prova ");
+                int prova3 = sc.nextInt();
+                if(prova3<0){
+                    System.out.println("Valor digitado incorretamente ;)");
+                    System.exit(0);
+                }
+                System.out.println("Informe ao sistema o valor da 4ª prova ");
+                int prova4 = sc.nextInt();
+                if(prova4<0){
+                    System.out.println("Valor digitado incorretamente ;)");
+                    System.exit(0);
+                }
+                System.out.println("Informe ao sistema o valor da 5ª prova ");
+                int prova5 = sc.nextInt();
+                if(prova5<0){
+                    System.out.println("Valor digitado incorretamente ;)");
+                    System.exit(0);
+                }
+                System.out.println("Informe ao sistema o valor da 6ª prova ");
+                int prova6 = sc.nextInt();
+                if(prova6<0){
+                    System.out.println("Valor digitado incorretamente ;)");
+                    System.exit(0);
+                }
+                media = (prova1+prova2+prova3+prova4+prova5+prova6)/6;
+                System.out.println("A média das notas é "+media);
+                System.out.println("\n---------------------------------");
+
+                case 8:
+                double resultado = 0;
+                float denominador = 3;
+                System.out.println("\n---------------------------------");
+                System.out.println("\nCalcule o fatorial do número");
+
+                System.out.println("Informe o número que será fatorado ");
+                int fat = sc.nextInt();
+                for(int i=2; i==fat;i++){
+                    resultado = resultado + (1/denominador);
+                    denominador *=3;
+                }
+                System.out.println("O fatorial é "+resultado);
+                System.out.println("\n---------------------------------");
+                default:
                 System.out.println("Opção inválida!!");
                 break;
             }

@@ -1,8 +1,6 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
-
 public class MenuAtividades {
     public static void main(String[] args) {
         System.out.println("Atividades de Java!!");
@@ -41,7 +39,8 @@ public class MenuAtividades {
 
                 case 1:
                 System.out.println("\n---------------------------------");
-                System.out.println("\nCalcule a média");
+                System.out.println("\n\u001B[32mCalcule a média\u001B[0m");
+
                 System.out.println("Digite a 1ª nota: ");
                 int nota1 = sc.nextInt();
                 System.out.println("Digite a 2ª nota: ");
@@ -50,26 +49,30 @@ public class MenuAtividades {
                 int nota3 = sc.nextInt();
 
                 int media = (nota1+nota2+nota3)/3;
+
                 System.out.println("A média é: "+media);
                 System.out.println("\n---------------------------------");
                 break;
 
                 case 2:
                 System.out.println("\n---------------------------------");
-                System.out.println("\nCalcule a área");
+                System.out.println("\n\u001B[32mCalcule a área\u001B[0m");
+
                 System.out.println("Informe o valor do 1º lado: ");
                 int lado1 = sc.nextInt();
                 System.out.println("Informe o valor do 2º lado: ");
                 int lado2 = sc.nextInt();
 
                 int area = (lado1*lado2);
-                System.out.println("O calculo da área é: "+area);
+
+                System.out.println("\nO calculo da área é: "+area);
                 System.out.println("\n---------------------------------");
                 break;
 
                 case 3:
                 System.out.println("\n---------------------------------");
-                System.out.println("\nCalcule o valoume");
+                System.out.println("\n\u001B[32mCalcule o valoume\u001B[0m");
+
                 System.out.println("Informe a largura: ");
                 int largura = sc.nextInt();
                 System.out.println("Informe a altura: ");
@@ -78,13 +81,15 @@ public class MenuAtividades {
                 int profundidade = sc.nextInt();
 
                 int valoume = (largura*altura*profundidade);
-                System.out.println("O calculo do volume é: "+valoume);
+
+                System.out.println("\nO calculo do volume é: "+valoume);
                 System.out.println("\n---------------------------------");
                 break;
 
                 case 4:
                 System.out.println("\n---------------------------------");
-                System.out.println("\nVerifique os valores");
+                System.out.println("\n\u001B[32mVerifique os valores\u001B[0m");
+
                 System.out.println("Informe o 1º valor de comparação: ");
                 int valor1 = sc.nextInt();
                 System.out.println("Informe o 2º valor de comparação: ");
@@ -100,7 +105,7 @@ public class MenuAtividades {
                 case 5:
                 double x1,x2;
                 System.out.println("\n---------------------------------");
-                System.out.println("\nCalcule baskhara");
+                System.out.println("\n\u001B[32mCalcule baskhara\u001B[0m");
                 System.out.println("Informe o valor de A: ");
                 int valorA = sc.nextInt();
                 System.out.println("Informe o valor de B: ");
@@ -109,14 +114,14 @@ public class MenuAtividades {
                 int valorC = sc.nextInt();
 
                 int delta = (valorB*2)+(4*(valorA*valorC));
-                System.out.println("O valor de delta = "+delta);
+                System.out.println("\nO valor de delta = "+delta);
                 
                 if(delta>=0){
                     x1 = ((-(valorB)+Math.sqrt(delta))/2*valorA);
                     x2 = ((-(valorB)-Math.sqrt(delta))/2*valorA);
 
-                    System.out.println("x1 = "+x1);
-                    System.out.println("x2 = "+x2);
+                    System.out.println("\nx1 = "+x1);
+                    System.out.println("\nx2 = "+x2);
                 
                 }else{
                     System.out.println("O valor de delta não possui raiz!");
@@ -126,7 +131,7 @@ public class MenuAtividades {
 
                 case 6:
                 System.out.println("\n---------------------------------");
-                System.out.println("\nCalcule a velocidade média de uma viagem de carro");
+                System.out.println("\n\u001B[32mCalcule a velocidade média de uma viagem de carro\u001B[0m");
                 
                 System.out.println("Informe a distância (km)");
                 int kilometro = sc.nextInt();
@@ -135,22 +140,22 @@ public class MenuAtividades {
 
                 int teste = (kilometro/hora);
                 
-                System.out.println("A velocidade média da viagem foi de: "+teste);
+                System.out.println("\nA velocidade média da viagem foi de: "+teste);
                 System.out.println("\n---------------------------------");  
                 break;
 
                 case 7:
                 System.out.println("\n---------------------------------");
-                System.out.println("\nCalcule o percentual de imposto pago por uma empresa");
+                System.out.println("\n\u001B[32mCalcule o percentual de imposto pago por uma empresa\u001B[0m");
 
                 System.out.println("Informe ao sistema o faturamento da empresa  ");
-                int faturamento = sc.nextInt();
+                float faturamento = sc.nextFloat();
                 if(faturamento<0){
                     System.out.println("Valor digitado incorretamente ;)");
                     System.exit(0);
                 }
                 System.out.println("Informe ao sistema a quantidade de impostos pagos pela empresa ");
-                int imposto = sc.nextInt();
+                float imposto = sc.nextFloat();
                 if(imposto<0){
                     System.out.println("Valor digitado incorretamente ;)");
                     System.exit(0);
@@ -165,7 +170,7 @@ public class MenuAtividades {
                 case 8:
 
                 System.out.println("\n---------------------------------");
-                System.out.println("\n\tVerifique se o número é par ou ímpar");
+                System.out.println("\n\t\u001B[32mVerifique se o número é par ou ímpar\u001B[0m");
 
                 System.out.println("\nInforme o número: ");
                 int nm = sc.nextInt();
@@ -180,7 +185,7 @@ public class MenuAtividades {
                 case 9:
                 
                 System.out.println("\n---------------------------------");
-                System.out.println("\n\tCompare duas frases (strings)");
+                System.out.println("\n\t\u001B[32mCompare duas frases (strings)\u001B[0m");
 
                 System.out.println("Informe a 1ª: ");
                 String resp1 = sc.next();
@@ -198,22 +203,21 @@ public class MenuAtividades {
                 case 10:
 
                 System.out.println("\n---------------------------------");
-                System.out.println("\n\tTransforme string em int");
+                System.out.println("\n\t\u001B[32mTransforme string em int\u001B[0m");
                 System.out.println("Digite algo ou letra: ");
-                //Scanner s = new Scanner(System.in);
-                //String trasnf = s.nextLine();
+                String trasnf = sc.next();
 
-                /*try{
-                    int i = Integer.parseInt(trasnf);
-                    
+                try{
+                    int i= Integer.parseInt(trasnf);
+                    System.out.println("O valor correspondente de string para int é: "+i);
                 } catch (NumberFormatException e) {
                     System.out.println("Formatação errada");
-                }*/
+                }
                 break;
                 
                 case 11:
                 System.out.println("\n---------------------------------");
-                System.out.println("\n\tVerifique o seu salário");
+                System.out.println("\n\t\u001B[32mVerifique o seu salário\u001B[0m");
                 System.out.println("Informe o seu sálario: ");
                 float salario = sc.nextFloat();
 
@@ -225,23 +229,33 @@ public class MenuAtividades {
                     System.out.println("\nVocê deve pagar 15%!!");
                 } if (salario>=3751.06 && salario<=4664.68) {
                     System.out.println("\nVocê deve pagar 22,5%!!");
-                } else {
+                } if (salario>=4664.68) {
                     System.out.println("\nVocê deve pagar 27,5%!!");
                 } 
+                
                 break;
 
                 case 12:
+            
                 System.out.println("\n---------------------------------");
-                System.out.println("\n\tVerifique se  número é primo\n");
+                System.out.println("\n\t\u001B[32mVerifique se  número é primo\u001B[0m\n");
                 System.out.println("Informe o número a ser verificado ");
                 int nmPrimo = sc.nextInt();
-                if(nmPrimo%1==0){
-                    if(nmPrimo%nmPrimo==0){
-                    System.out.println("Parabéns o número informado é primo ;)");
-                }else{
-                    System.out.println("Que pena, o número informado não é primo ;(");
+                boolean verifica = true;
+
+                for (int i = 2; i <= Math.sqrt(nmPrimo); i++) {
+                    if (nmPrimo % i == 0) {
+                        verifica = false;
+                        break;
+                    }
                 }
+
+                if (verifica && nmPrimo > 1) {
+                    System.out.println("\n\u001B[33mParabéns, o número informado é primo! ;)\u001B[0m");
+                } else {
+                    System.out.println("\n\u001B[33mQue pena, o número informado não é primo. :(\u001B[0m");
                 }
+
                 break;
                 default:
                 System.out.println("Opção inválida!!");

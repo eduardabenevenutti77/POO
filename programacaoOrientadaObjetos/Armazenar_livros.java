@@ -197,7 +197,7 @@ public class Armazenar_livros {
                 CadastroLivro livro_devolver = CadastroLivro.livros.get(acharPosicaoLivro_devolver);
 
                 try {
-                    livro.devolverLivro();
+                    livro_devolver.devolverLivro();
                 } catch (Exception error) {
                     System.out.println(error.getMessage());
                 }
@@ -223,7 +223,7 @@ public class Armazenar_livros {
                         acharPosicaoMidia = -1;
                     }
                 } while(acharPosicaoMidia<0);
-                CadastrarMidia midia_Cadastrar = CadastrarMidia.midias.get(acharPosicaoMidia);
+                CadastrarMidia midias = CadastrarMidia.midias.get(acharPosicaoMidia);
                 new CadastrarMidia(nomeMidia, disponibilidade, classifica);
                 
                 break;

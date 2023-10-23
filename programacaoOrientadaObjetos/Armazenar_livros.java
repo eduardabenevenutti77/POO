@@ -204,7 +204,7 @@ public class Armazenar_livros {
                 break;
 
                 case 7:
-                System.out.println("\nInforme título da midia = ");
+                System.out.println("\nInforme título da mídia = ");
                 String nomeMidia = sc.next();
                 System.out.println("\nInforme a classificação: ");
                 String classifica = sc.next();

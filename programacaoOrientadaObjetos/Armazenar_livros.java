@@ -16,6 +16,7 @@ public class Armazenar_livros {
             System.out.println("4 - Incluir livro");
             System.out.println("5 - Emprestar livro");
             System.out.println("6 - Devolver livro");
+            System.out.println("7 - Cadastrar Midia");
             try {
                 op = sc.nextInt();
             } catch (Exception e) {
@@ -159,9 +160,10 @@ public class Armazenar_livros {
                         }
                         }while(acharPosicaoBiblioteca_emprestar<0);
 
-                        CadastrarBiblioteca biblioteca_emprestar = CadastrarBiblioteca.bibliotecas.get(acharPosicaoBiblioteca);
+                        CadastrarBiblioteca biblioteca_emprestar = CadastrarBiblioteca.bibliotecas.get(acharPosicaoBiblioteca_emprestar);
 
                     int acharPosicaoLivro_emprestar = -1;
+                    CadastrarBiblioteca bibliotecas= new CadastrarBiblioteca();
                     do{
                         biblioteca.imprimirLivros();
                         try {
@@ -217,12 +219,36 @@ public class Armazenar_livros {
                 CadastroLivro livro_devolver = CadastroLivro.livros.get(acharPosicaoLivro_devolver);
 
                 try {
-                    classificacao.devolverLivro();
+                    livro.devolverLivro();
                 } catch (Exception error) {
                     System.out.println(error.getMessage());
                 }
                 break;
 
+                case 7:
+                System.out.println("\nInforme título da midia = ");
+                String nomeMidia = sc.next();
+                System.out.println("\nInforme a classificação: ");
+                String classifica = sc.next();
+                System.out.println("\nInforme a disponiblidade: ");
+                boolean disponibilidade = sc.nextBoolean();
+                int acharPosicaoMidia = -1;
+                do{
+                    CadastrarMidia.listarMidia();
+                    try{
+                        acharPosicaoMidia = sc.nextInt();
+                        if(acharPosicaoMidia >=CadastrarMidia.midias.size()){
+                            throw new Exception("\nA Mídia é inválida!");
+                        }
+                    }catch(Exception error){
+                        System.out.println("\nA mídia é inválida");
+                        acharPosicaoMidia = -1;
+                    }
+                } while(acharPosicaoMidia<0);
+                CadastrarMidia midia_Cadastrar = CadastrarMidia.midias.get(acharPosicaoMidia);
+                new CadastrarMidia(nomeMidia, disponibilidade, classifica);
+                
+                break;
                 default: {
                     System.out.println("Opção inválida");
                     break;

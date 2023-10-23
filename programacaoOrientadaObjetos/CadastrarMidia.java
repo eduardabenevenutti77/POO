@@ -23,4 +23,9 @@ public class CadastrarMidia extends CadastrarClassificacao {
                 ", Classificação = " + super.getClassificacao() + 
                 "& Disponibilidade = " + super.getDisponibilidade(); 
     }
+    public static void listarMidia(){
+        for(CadastrarMidia listarMidia: midias){
+            System.out.println("Midias Cadastradas: "+listarMidia);
+        }
+    }
 }

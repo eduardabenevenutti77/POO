@@ -161,28 +161,6 @@ public class Armazenar_livros {
                         }while(acharPosicaoBiblioteca_emprestar<0);
 
                         CadastrarBiblioteca biblioteca_emprestar = CadastrarBiblioteca.bibliotecas.get(acharPosicaoBiblioteca_emprestar);
-
-                    int acharPosicaoLivro_emprestar = -1;
-                    CadastrarBiblioteca bibliotecas= new CadastrarBiblioteca();
-                    do{
-                        biblioteca.imprimirLivros();
-                        try {
-                            acharPosicaoLivro_emprestar = sc.nextInt();
-                            if (acharPosicaoLivro_emprestar >= CadastroLivro.livros.size()) {
-                                throw new Exception("\nO livro informado é inválido!");
-                            }
-                        } catch (Exception error) {
-                            System.out.println("\nO livro informado é inválido!");
-                            acharPosicaoLivro_emprestar = -1;
-                        }
-                    }while(acharPosicaoLivro_emprestar<0);
-
-                    CadastroLivro livro_emprestar = CadastroLivro.livros.get(acharPosicaoLivro_emprestar);
-                    try {
-                        livro.emprestarLivros();
-                    } catch (Exception error){
-                        System.out.println(error.getMessage());
-                    }
                 break;
 
                 case 6:

@@ -8,6 +8,7 @@ public class Armazenar_livros {
         int op = 0;
 
         do {
+            System.out.println("\n\tBem vindo(a) ao cadastramento de livros em Java ;)");
             System.out.println("Selecione 1ª opção: ");
             System.out.println("0 - Sair do sistema");
             System.out.println("1 - Cadastrar autor");

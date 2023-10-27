@@ -8,7 +8,8 @@ public class Armazenar_livros {
         int op = 0;
 
         do {
-            System.out.println("Selecione 1ª opção: ");
+            System.out.println("\n\tBem vindo(a) ao cadastramento de livros em Java ;)\n");
+            System.out.println("\nSelecione 1ª opção: ");
             System.out.println("0 - Sair do sistema");
             System.out.println("1 - Cadastrar autor");
             System.out.println("2 - Cadastrar livro");
@@ -144,84 +145,84 @@ public class Armazenar_livros {
                 CadastroLivro  livro = CadastroLivro.livros.get(acharPosicaoLivro);
                 break;
 
-                case 5:
-                    int acharPosicaoBiblioteca_emprestar = -1;
-                    do{
-                        CadastrarBiblioteca.imprimirBibliotecas();
-                        try{
-                            acharPosicaoBiblioteca_emprestar = sc.nextInt();
-                            if(acharPosicaoBiblioteca_emprestar>=CadastrarBiblioteca.bibliotecas.size()){
-                                throw new Exception("\nBiblioteca informada é inválida!!");
-                            } 
-                        }catch(Exception error){
-                            System.out.println("\nA Biblioteca informada é inválida!");
-                            acharPosicaoBiblioteca_emprestar = -1;
-                        }
-                        }while(acharPosicaoBiblioteca_emprestar<0);
+                // case 5:
+                //     int acharPosicaoBiblioteca_emprestar = -1;
+                //     do{
+                //         CadastrarBiblioteca.imprimirBibliotecas();
+                //         try{
+                //             acharPosicaoBiblioteca_emprestar = sc.nextInt();
+                //             if(acharPosicaoBiblioteca_emprestar>=CadastrarBiblioteca.bibliotecas.size()){
+                //                 throw new Exception("\nBiblioteca informada é inválida!!");
+                //             } 
+                //         }catch(Exception error){
+                //             System.out.println("\nA Biblioteca informada é inválida!");
+                //             acharPosicaoBiblioteca_emprestar = -1;
+                //         }
+                //         }while(acharPosicaoBiblioteca_emprestar<0);
 
-                        CadastrarBiblioteca biblioteca_emprestar = CadastrarBiblioteca.bibliotecas.get(acharPosicaoBiblioteca);
+                //         CadastrarBiblioteca biblioteca_emprestar = CadastrarBiblioteca.bibliotecas.get(acharPosicaoBiblioteca);
 
-                    int acharPosicaoLivro_emprestar = -1;
-                    do{
-                        biblioteca.imprimirLivros();
-                        try {
-                            acharPosicaoLivro_emprestar = sc.nextInt();
-                            if (acharPosicaoLivro_emprestar >= CadastroLivro.livros.size()) {
-                                throw new Exception("\nO livro informado é inválido!");
-                            }
-                        } catch (Exception error) {
-                            System.out.println("\nO livro informado é inválido!");
-                            acharPosicaoLivro_emprestar = -1;
-                        }
-                    }while(acharPosicaoLivro_emprestar<0);
+                //     int acharPosicaoLivro_emprestar = -1;
+                //     do{
+                //         biblioteca.imprimirLivros();
+                //         try {
+                //             acharPosicaoLivro_emprestar = sc.nextInt();
+                //             if (acharPosicaoLivro_emprestar >= CadastroLivro.livros.size()) {
+                //                 throw new Exception("\nO livro informado é inválido!");
+                //             }
+                //         } catch (Exception error) {
+                //             System.out.println("\nO livro informado é inválido!");
+                //             acharPosicaoLivro_emprestar = -1;
+                //         }
+                //     }while(acharPosicaoLivro_emprestar<0);
 
-                    CadastroLivro livro_emprestar = CadastroLivro.livros.get(acharPosicaoLivro_emprestar);
-                    try {
-                        livro.emprestarLivros();
-                    } catch (Exception error){
-                        System.out.println(error.getMessage());
-                    }
-                break;
+                //     CadastroLivro livro_emprestar = CadastroLivro.livros.get(acharPosicaoLivro_emprestar);
+                //     try {
+                //         livro.emprestarLivros();
+                //     } catch (Exception error){
+                //         System.out.println(error.getMessage());
+                //     }
+                // break;
 
-                case 6:
-                int acharPosicaoBiblioteca_devolver = -1;
-                do{
-                    CadastrarBiblioteca.imprimirBibliotecas();
-                    try{
-                        acharPosicaoBiblioteca_devolver = sc.nextInt();
-                        if(acharPosicaoBiblioteca_devolver>=CadastrarBiblioteca.bibliotecas.size()){
-                            throw new Exception("\nBiblioteca informada é inválida!!");
-                        }
-                    }catch(Exception error){
-                            System.out.println("\nA Biblioteca informada é inválida!");
-                            acharPosicaoBiblioteca_devolver = -1;
-                        }
-                    }while(acharPosicaoBiblioteca_devolver<0);
+                // case 6:
+                // int acharPosicaoBiblioteca_devolver = -1;
+                // do{
+                //     CadastrarBiblioteca.imprimirBibliotecas();
+                //     try{
+                //         acharPosicaoBiblioteca_devolver = sc.nextInt();
+                //         if(acharPosicaoBiblioteca_devolver>=CadastrarBiblioteca.bibliotecas.size()){
+                //             throw new Exception("\nBiblioteca informada é inválida!!");
+                //         }
+                //     }catch(Exception error){
+                //             System.out.println("\nA Biblioteca informada é inválida!");
+                //             acharPosicaoBiblioteca_devolver = -1;
+                //         }
+                //     }while(acharPosicaoBiblioteca_devolver<0);
 
-                    CadastrarBiblioteca biblioteca_devolver = CadastrarBiblioteca.bibliotecas.get(acharPosicaoBiblioteca_devolver);
+                //     CadastrarBiblioteca biblioteca_devolver = CadastrarBiblioteca.bibliotecas.get(acharPosicaoBiblioteca_devolver);
 
-                int acharPosicaoLivro_devolver = -1;
-                do{
-                    CadastroLivro.listarLivros();
-                    try{
-                        acharPosicaoLivro_devolver = sc.nextInt();
-                        if(acharPosicaoLivro_devolver>=CadastroLivro.livros.size()){
-                            throw new Exception("\nO livro informado é inválido!!");
-                        }
-                    }catch(Exception error){
-                        System.out.println("\nO livro informado é inválido!!");
-                        acharPosicaoLivro_devolver = -1;
-                    }
-                }while(acharPosicaoLivro_devolver<0);
+                // int acharPosicaoLivro_devolver = -1;
+                // do{
+                //     CadastroLivro.listarLivros();
+                //     try{
+                //         acharPosicaoLivro_devolver = sc.nextInt();
+                //         if(acharPosicaoLivro_devolver>=CadastroLivro.livros.size()){
+                //             throw new Exception("\nO livro informado é inválido!!");
+                //         }
+                //     }catch(Exception error){
+                //         System.out.println("\nO livro informado é inválido!!");
+                //         acharPosicaoLivro_devolver = -1;
+                //     }
+                // }while(acharPosicaoLivro_devolver<0);
 
-                CadastroLivro livro_devolver = CadastroLivro.livros.get(acharPosicaoLivro_devolver);
+                // CadastroLivro livro_devolver = CadastroLivro.livros.get(acharPosicaoLivro_devolver);
 
-                try {
-                    classificacao.devolverLivro();
-                } catch (Exception error) {
-                    System.out.println(error.getMessage());
-                }
-                break;
+                // try {
+                //     classificacao.devolverLivro();
+                // } catch (Exception error) {
+                //     System.out.println(error.getMessage());
+                // }
+                // break;
 
                 default: {
                     System.out.println("Opção inválida");

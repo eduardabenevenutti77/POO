@@ -28,7 +28,7 @@ public class CadastroLivro extends CadastrarClassificacao {
     public Integer getNumeroINNS() {
         return this.numeroINNS;
     }
-    //
+    //método toString da classe
     public String toString() {
         return "\n\tListagem de Livros\nNome do Livro = " + this.tituloLivro +
                "\nNome do Autor = " + this.nome + // Use um atributo específico do autor
@@ -36,6 +36,7 @@ public class CadastroLivro extends CadastrarClassificacao {
                "\n Número do INNS = " + this.numeroINNS +
                "& Classificação = " + super.classificacao;
     }
+    //foreach de listagem
     public static void listarLivros() {
         for (CadastroLivro listarLivros : livros) {
             System.out.println("\nLivros cadastrados = " + listarLivros.toString() + ";");

@@ -2,13 +2,13 @@ import java.util.ArrayList;
 
 public class CadastroLivro extends CadastrarClassificacao {
     private String tituloLivro;
-    private Pessoas nome;
+    private CadastroAutor nome;
     private int numeroINNS;
 
     public static ArrayList<CadastroLivro> livros = new ArrayList<CadastroLivro>();
 
     //método construtor da classe
-    public CadastroLivro(String tituloLivro, Pessoas nome, boolean disponibilidade, int numeroINNS, String classificacao) {
+    public CadastroLivro(String tituloLivro, CadastroAutor nome, boolean disponibilidade, int numeroINNS, String classificacao) {
         super(classificacao, disponibilidade); 
         this.tituloLivro = tituloLivro;
         this.nome = nome;

@@ -3,7 +3,7 @@ public class revenda {
         /*materalização da classe*/
         carro objetoCarro = new carro("ABC - 1234");
         System.out.println(objetoCarro.placa);
-        objetoCarro.acelerar(velocidade);
+        // objetoCarro.acelerar(velocidade);
         
         System.out.println(objetoCarro.velocimetro);
 

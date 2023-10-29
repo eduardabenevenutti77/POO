@@ -26,6 +26,10 @@ public class CadastroAutor extends Pessoas{
     public String getEmail(){
         return this.email;
     }
+    //get para mostrar a listagem de autores
+    public static ArrayList<CadastroAutor> getAutores() {
+        return nomeAutores;
+    }
     //método toString()
     public String toString(){
         return "\n\tListagem de Autores"+super.nome.toString()+"\n E-mail: "+this.email+"\n Nacionalidade: "+this.nacionalidade;

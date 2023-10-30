@@ -50,7 +50,7 @@ public class Armazenar_livros {
                     String tituloLivro = sc.next();
                     int acharPosicaoAutor = -1;
                     do {
-                        // Exibir a lista de autores disponíveis
+                        
                         System.out.println("Lista de Autores Disponíveis:");
                         for (int i = 0; i < CadastroAutor.nomeAutores.size(); i++) {
                             System.out.println(i + " - " + CadastroAutor.nomeAutores.get(i).getNome());
@@ -69,22 +69,19 @@ public class Armazenar_livros {
 
                     CadastroAutor autorSelecionado = CadastroAutor.nomeAutores.get(acharPosicaoAutor);
 
-                    // Solicita as informações da editora
+                    
                     System.out.println("\nInforme o nome da editora = ");
                     String nomeEditora = sc.next();
                     System.out.println("Informe o e-mail da editora = ");
                     String emailEditora = sc.next();
                     System.out.println("Informe o CNPJ da editora = ");
-                    int cnpj = sc.nextInt();  // Visto que o CNPJ pode conter dígitos não numéricos, é melhor tratá-lo como uma string.
-
-                    // Crie uma instância de CadastrarEditora com as informações coletadas
+                    int cnpj = sc.nextInt(); 
                     CadastrarEditora novaEditora = new CadastrarEditora(cnpj, nomeEditora, emailEditora);
                     CadastrarEditora.editoras.add(novaEditora);  
 
                     
                     System.out.println("\nInforme o número do INSS");
                     int numeroINSS = sc.nextInt();
-
                     if (numeroINSS <= 0) {
                         System.out.println("\nO número informado é inválido!");
                         System.exit(0);

@@ -1,116 +1,102 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Armazenar_livros {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
 
-        int op = 0;
+            int op = 0;
 
-        do {
-            System.out.println("\n\n");
-            System.out.println("# -------------------------------------------------------- #");
-            System.out.println("| Bem vindo(a) ao sistema de gerenciamento de livros       |");
-            System.out.println("| Selecione uma opção:                                     |");
-            System.out.println("| \t\u001B[36m00\u001B[0m - Sair do Programa                              |");
-            System.out.println("| \t\u001B[36m01\u001B[0m - Cadastrar Autor                               |");
-            System.out.println("| \t\u001B[36m02\u001B[0m - Cadastrar Livro                               |");
-            System.out.println("| \t\u001B[36m03\u001B[0m - Cadastrar Biblioteca                          |");
-            System.out.println("| \t\u001B[36m04\u001B[0m - Cadastrar Mídia                               |");
-            System.out.println("| \t\u001B[36m05\u001B[0m - Cadastrar Mídia Digital                       |");
-            System.out.println("| \t\u001B[36m06\u001B[0m - Incluir Livro/Mídia/Midia D. na Biblioteca    |");
-            System.out.println("| \t\u001B[36m07\u001B[0m - Emprestar Livro/Mídia/Mídia Digital           |");
-            System.out.println("| \t\u001B[36m08\u001B[0m - Devolver Livro/Mídia/Mídia Digital            |");
-            System.out.println("# -------------------------------------------------------- #");
+            do {
+                System.out.println("\n\n");
+                System.out.println("# -------------------------------------------------------- #");
+                System.out.println("| Bem vindo(a) ao sistema de gerenciamento de livros       |");
+                System.out.println("| Selecione uma opção:                                     |");
+                System.out.println("| \t\u001B[36m00\u001B[0m - Sair do Programa                              |");
+                System.out.println("| \t\u001B[36m01\u001B[0m - Cadastrar Autor                               |");
+                System.out.println("| \t\u001B[36m02\u001B[0m - Cadastrar Livro                               |");
+                System.out.println("| \t\u001B[36m03\u001B[0m - Cadastrar Biblioteca                          |");
+                System.out.println("| \t\u001B[36m04\u001B[0m - Cadastrar Mídia                               |");
+                System.out.println("| \t\u001B[36m05\u001B[0m - Cadastrar Mídia Digital                       |");
+                System.out.println("| \t\u001B[36m06\u001B[0m - Incluir Livro/Mídia/Midia D. na Biblioteca    |");
+                System.out.println("| \t\u001B[36m07\u001B[0m - Emprestar Livro/Mídia/Mídia Digital           |");
+                System.out.println("| \t\u001B[36m08\u001B[0m - Devolver Livro/Mídia/Mídia Digital            |");
+                System.out.println("# -------------------------------------------------------- #");
 
-            try {
-                op = sc.nextInt();
-            } catch (Exception e) {
-                op = 100;
-            }
+                try {
+                    op = sc.nextInt();
+                } catch (Exception e) {
+                    op = 100;
+                }
 
-            switch (op) {
-            case 0:
-                System.out.println("\u001B[32mSaindo do programa :(\u001B[0m");
-            break;
+                switch (op) {
+                case 0:
+                    System.out.println("\u001B[32mSaindo do programa :(\u001B[0m");
+                break;
 
-            case 1: //cadastro de autor
-               System.out.println("\n\tCadastre um(a) autor(a) :)");
-               System.out.println("\nInforme o nome do autor = ");
-               String nomeAutor = sc.next();
-               System.out.println("\nInforme o email do autor = ");
-               String email = sc.next();
-               System.out.println("\nInforme a nacionalidade = ");
-               String nacionalidade = sc.next();
-               new CadastroAutor(nomeAutor, email, nacionalidade);
-            break;
+                case 1: //cadastro de autor
+                System.out.println("\n\tCadastre um(a) autor(a) :)");
+                System.out.println("\nInforme o nome do autor = ");
+                String nomeAutor = sc.next();
+                System.out.println("\nInforme o email do autor = ");
+                String email = sc.next();
+                System.out.println("\nInforme a nacionalidade = ");
+                String nacionalidade = sc.next();
+                new CadastroAutor(nomeAutor, email, nacionalidade);
+                break;
 
-            case 2: //cadastro de livro
-                System.out.println("\n\tCadastre um livro ;) ");
-                System.out.println("\nInforme título da obra = ");
-                String tituloLivro = sc.next();
-                int acharPosicaoAutor = -1;
-                do {
-                        CadastroLivro.listarLivros();
-                    try {
-                        acharPosicaoAutor = sc.nextInt();
-                        ArrayList<CadastroAutor> autores = CadastroAutor.getAutores();
-                        if (acharPosicaoAutor >= autores.size()) {
-                            System.out.println("\nO autor informado é inválido!");
+                case 2: //cadastro de livro
+                    System.out.println("\n\tCadastre um livro ;) ");
+                    System.out.println("\nInforme título da obra = ");
+                    String tituloLivro = sc.next();
+                    int acharPosicaoAutor = -1;
+                    do {
+                        // Exibir a lista de autores disponíveis
+                        System.out.println("Lista de Autores Disponíveis:");
+                        for (int i = 0; i < CadastroAutor.nomeAutores.size(); i++) {
+                            System.out.println(i + " - " + CadastroAutor.nomeAutores.get(i).getNome());
                         }
-                     } catch (Exception error) {
-                            System.out.println("\nO autor informado é inválido!");
+                        
+                        try {
+                            acharPosicaoAutor = sc.nextInt();
+                            if (acharPosicaoAutor < 0 || acharPosicaoAutor >= CadastroAutor.nomeAutores.size()) {
+                                System.out.println("Autor informado é inválido!");
+                            }
+                        } catch (Exception error) {
+                            System.out.println("Autor informado é inválido!");
                             acharPosicaoAutor = -1;
                         }
                     } while (acharPosicaoAutor < 0);
-                    CadastroAutor nomeAutor_cadastrar = CadastroAutor.nomeAutores.get(acharPosicaoAutor);
 
+                    CadastroAutor autorSelecionado = CadastroAutor.nomeAutores.get(acharPosicaoAutor);
+
+                    // Solicita as informações da editora
                     System.out.println("\nInforme o nome da editora = ");
                     String nomeEditora = sc.next();
                     System.out.println("Informe o e-mail da editora = ");
-                    String email_editora = sc.next();
-                    System.out.println("\nInforme o CNPJ da editora = ");
-                    int cnpj = sc.nextInt();
-                    int acharPosicaoEditora = -1;
-                    do{
-                        CadastrarEditora.listarEditoras();;
-                        try{
-                        acharPosicaoEditora = sc.nextInt();
-                            if(acharPosicaoEditora >=CadastrarEditora.editoras.size()){
-                                throw new Exception("\nA editora é inválida!");
-                            }
-                        }catch(Exception error){
-                            System.out.println("\nA editora é inválida");
-                            acharPosicaoEditora = -1;
-                        }
-                    } while(acharPosicaoEditora<0);
-                //CadastrarEditora editora_cadastrar = CadastrarEditora.editoras.get(acharPosicaoEditora);
+                    String emailEditora = sc.next();
+                    System.out.println("Informe o CNPJ da editora = ");
+                    int cnpj = sc.nextInt();  // Visto que o CNPJ pode conter dígitos não numéricos, é melhor tratá-lo como uma string.
 
+                    // Crie uma instância de CadastrarEditora com as informações coletadas
+                    CadastrarEditora novaEditora = new CadastrarEditora(cnpj, nomeEditora, emailEditora);
+                    CadastrarEditora.editoras.add(novaEditora);  
+
+                    
                     System.out.println("\nInforme o número do INSS");
-                    int numeroINNS = sc.nextInt();
-                    if(numeroINNS>=0){
+                    int numeroINSS = sc.nextInt();
+
+                    if (numeroINSS <= 0) {
                         System.out.println("\nO número informado é inválido!");
                         System.exit(0);
                     }
 
                     System.out.println("\nInforme a classificação do livro (drama, suspense, terror e etc) = ");
                     String classificacao = sc.next();
-                    int acharPosicaoClassificacao = -1;
-                    do{
-                        CadastrarClassificacao.listarClassificacoes();
-                        try{
-                            acharPosicaoClassificacao = sc.nextInt();
-                            if(acharPosicaoClassificacao>=CadastrarClassificacao.classificacoes.size()){
-                                throw new Exception("\nA classficação informada não é válida!");
-                            }
-                        }catch(Exception error){
-                            System.out.println("\nA classificação informada é inválida!");
-                            acharPosicaoClassificacao = -1;
-                        }
-                    }while(acharPosicaoClassificacao<0);
-                    //CadastrarClassificacao classificacao_cadastrar = CadastrarClassificacao.classificacoes.get(acharPosicaoClassificacao);
-                    new CadastroLivro(tituloLivro, nomeAutor_cadastrar, true, numeroINNS, classificacao);
-                    new CadastrarEditora(cnpj, nomeEditora, email_editora);
+
+                    
+                    CadastroLivro novoLivro = new CadastroLivro(tituloLivro, autorSelecionado, true, numeroINSS, classificacao);
+                    CadastroLivro.livros.add(novoLivro);  
+
                 break;
             
                 case 3: //criando a biblioteca

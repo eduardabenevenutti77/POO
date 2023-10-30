@@ -7,7 +7,7 @@ public class CadastroLivro extends CadastrarClassificacao {
     private boolean disponibilidade;
 
     public static ArrayList<CadastroLivro> livros = new ArrayList<CadastroLivro>();
-
+    
     //método construtor da classe
     public CadastroLivro(String tituloLivro, CadastroAutor nome, boolean disponibilidade, int numeroINNS, String classificacao) {
         super(classificacao); 
@@ -15,7 +15,6 @@ public class CadastroLivro extends CadastrarClassificacao {
         this.nome = nome;
         this.numeroINNS = numeroINNS;
         this.disponibilidade = disponibilidade;
-        
         livros.add(this);
     }
     //agrupamento de set's e get's

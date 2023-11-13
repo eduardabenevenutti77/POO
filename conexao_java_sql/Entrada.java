@@ -25,7 +25,7 @@ public class Entrada {
                     "root",
                     ""
                 );
-         System.out.println("Conexão estabelecida!"); //informa que a conexão com banco aconteceu certo
+         System.out.println("Conexão estabelecida!"); //informa que a conexão com banco ocorreu corretamente
          PreparedStatement ps = connManager.prepareStatement("insert into usuario.usuario values (?, ?, ?, ?)"); //comando que será realizado
          ps.setLong(1, 0); //puxa o campo e o valor que será inserido
          ps.setString(2, this.nome); 

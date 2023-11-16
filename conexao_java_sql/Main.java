@@ -22,45 +22,45 @@ public class Main {
             switch (opcao) {
                 case 1:
                     System.out.print("Nome do Usuário: ");
-                    String nomeCriar = sc.nextLine();
+                    String name = sc.nextLine();
                     System.out.print("Email do Usuário: ");
-                    String emailCriar = sc.nextLine();
+                    String email = sc.nextLine();
                     System.out.print("Senha do Usuário: ");
-                    String senhaCriar = sc.nextLine();
+                    String password = sc.nextLine();
 
-                    Entrada usuarioCriar = new Entrada(0, nomeCriar, emailCriar, senhaCriar);
-                    usuarioCriar.inserirUsuario();
+                    Entrada cadastrarUsuario = new Entrada(0, name, email, password);
+                    cadastrarUsuario.cadastrar();
                 break;
 
                 case 2:
-                    System.out.print("ID do usuário a ser alterado: ");
-                    int idAlterar = sc.nextInt();
+                    System.out.print("Número de identificação do usuário: ");
+                    int id = sc.nextInt();
 
                     System.out.print("Novo nome: ");
-                    String novoNome = sc.nextLine();
+                    String newName = sc.nextLine();
                     System.out.print("Novo email: ");
-                    String novoEmail = sc.nextLine();
+                    String newEmail = sc.nextLine();
                     System.out.print("Nova senha: ");
-                    String novaSenha = sc.nextLine();
+                    String newPassword = sc.nextLine();
 
-                    Entrada usuarioAlterar = new Entrada(idAlterar, novoNome, novoEmail, novaSenha);
-                    usuarioAlterar.atualizarUsuario();
+                    Entrada alterarUsuario = new Entrada(id, newName, newEmail, newPassword);
+                    alterarUsuario.alterar();
                 break;
 
                 case 3:
-                    System.out.print("ID do usuário a ser excluído: ");
-                    int idExcluir = sc.nextInt();
+                    System.out.print("Número de identificação do usuário: ");
+                    int id_deletar = sc.nextInt();
 
-                    Entrada usuarioExcluir = new Entrada(idExcluir, null, null, null);
-                    usuarioExcluir.excluirUsuario();
+                    Entrada deletarUsuario = new Entrada(id_deletar, null, null, null);
+                    deletarUsuario.deletar();
                 break;
 
                 case 4:
-                    Entrada.visualizarUsuarios();
+                    Entrada.mostrar();
                 break;
 
                 default:
-                    System.out.println("Opção inválida. Tente novamente.");
+                    System.out.println("A opção informada é inválida! Insira outro valor ;)");
             }
         }
     }

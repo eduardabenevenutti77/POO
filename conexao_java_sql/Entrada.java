@@ -18,7 +18,7 @@ public class Entrada {
         this.senha = senha;
     }
     
-    public void inserirUsuario() {
+    public void cadastrar() {
         try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/usuario", "root", "")) {
             try (PreparedStatement sc = connManager.prepareStatement("INSERT INTO usuario.usuario VALUES (?, ?, ?, ?)")) {
                 sc.setLong(1, 0); 
@@ -27,13 +27,13 @@ public class Entrada {
                 sc.setString(4, this.senha);
                 sc.executeUpdate();
 
-                System.out.println("Usuário cadastrado");
+                System.out.println("Usuário cadastrado com sucesso!");
             }
         } catch (SQLException exception) {
             System.out.println("Erro ao cadastrar usuário: " + exception.getMessage());
         }
     }
-    public void atualizarUsuario() {
+    public void alterar() {
        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/usuario", "root", "")) {
             try (PreparedStatement sc = connManager.prepareStatement("UPDATE usuario.usuario SET nome=?, email=?, senha=? WHERE id=?")) {
                 sc.setString(1, this.nome);
@@ -48,7 +48,7 @@ public class Entrada {
             System.out.println("Erro ao alterar usuário: " + exception.getMessage());
         }
     }
-    public void excluirUsuario() {
+    public void deletar() {
         try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/usuario", "root", "")) {
             try (PreparedStatement sc = connManager.prepareStatement("DELETE FROM usuario.usuario WHERE id=?")) {
                 sc.setInt(1, this.id);
@@ -60,7 +60,7 @@ public class Entrada {
             System.out.println("Erro ao deletar usuário: " + exception.getMessage());
         }
     }
-    public static void visualizarUsuarios() {
+    public static void mostrar() {
         try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/usuario", "root", "")) {
             try (PreparedStatement sc = connManager.prepareStatement("SELECT * FROM usuario.usuario");
                  ResultSet rs = sc.executeQuery()) {
@@ -75,7 +75,7 @@ public class Entrada {
                 }
             }
         } catch (SQLException exception) {
-            System.out.println("Erro ao visualizar usuários: " + exception.getMessage());
+            System.out.println("Erro ao selecionar os usuários para a visualização: " + exception.getMessage());
         }
     }
 }

@@ -1,40 +1,81 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-// import java.sql.ResultSet;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-// import java.sql.Statement;
 
 public class Entrada {
 
-        private String nome;
-        private String email;
-        private String senha;
+    public int id;
+    public String nome;
+    public String email;
+    public String senha;
 
-        public Entrada(String nome, String email, String senha) {
+    public Entrada(int id, String nome, String email, String senha) {
+        this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
     }
- 
+    
     public void inserirUsuario() {
-        try {
-            Connection connManager = DriverManager
-                .getConnection(
-                    "jdbc:mysql://localhost:3306/usuario",
-                    "root",
-                    ""
-                );
-         System.out.println("Conexão estabelecida!"); //informa que a conexão com banco ocorreu corretamente
-         PreparedStatement ps = connManager.prepareStatement("insert into usuario.usuario values (?, ?, ?, ?)"); //comando que será realizado
-         ps.setLong(1, 0); //puxa o campo e o valor que será inserido
-         ps.setString(2, this.nome); 
-         ps.setString(3, this.email);
-         ps.setString(4, this.senha);
-         ps.executeUpdate(); //executa o comando
-         connManager.close(); //termina a conexão
+        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/usuario", "root", "")) {
+            try (PreparedStatement sc = connManager.prepareStatement("INSERT INTO usuario.usuario VALUES (?, ?, ?, ?)")) {
+                sc.setLong(1, 0); 
+                sc.setString(2, this.nome);
+                sc.setString(3, this.email);
+                sc.setString(4, this.senha);
+                sc.executeUpdate();
+
+                System.out.println("Usuário cadastrado");
+            }
         } catch (SQLException exception) {
-            System.out.println(exception.getMessage()); //puxa uma mensagem de erro de conexão automático
+            System.out.println("Erro ao cadastrar usuário: " + exception.getMessage());
         }
-    }  
+    }
+    public void atualizarUsuario() {
+       try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/usuario", "root", "")) {
+            try (PreparedStatement sc = connManager.prepareStatement("UPDATE usuario.usuario SET nome=?, email=?, senha=? WHERE id=?")) {
+                sc.setString(1, this.nome);
+                sc.setString(2, this.email);
+                sc.setString(3, this.senha);
+                sc.setInt(4, this.id);
+                sc.executeUpdate();
+
+                System.out.println("Usuário alterado com sucesso!");
+            }
+        } catch (SQLException exception) {
+            System.out.println("Erro ao alterar usuário: " + exception.getMessage());
+        }
+    }
+    public void excluirUsuario() {
+        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/usuario", "root", "")) {
+            try (PreparedStatement sc = connManager.prepareStatement("DELETE FROM usuario.usuario WHERE id=?")) {
+                sc.setInt(1, this.id);
+                sc.executeUpdate();
+
+                System.out.println("Usuário deletado com sucesso!");
+            }
+        } catch (SQLException exception) {
+            System.out.println("Erro ao deletar usuário: " + exception.getMessage());
+        }
+    }
+    public static void visualizarUsuarios() {
+        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/usuario", "root", "")) {
+            try (PreparedStatement sc = connManager.prepareStatement("SELECT * FROM usuario.usuario");
+                 ResultSet rs = sc.executeQuery()) {
+
+                while (rs.next()) {
+                    int id = rs.getInt("id");
+                    String nome = rs.getString("nome");
+                    String email = rs.getString("email");
+                    String senha = rs.getString("senha");
+
+                    System.out.println("ID: " + id + ", Nome do Usuário: " + nome + ", E-mail do Usuário: " + email + ", Senha do Usuário: " + senha);
+                }
+            }
+        } catch (SQLException exception) {
+            System.out.println("Erro ao visualizar usuários: " + exception.getMessage());
+        }
+    }
 }

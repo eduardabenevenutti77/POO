@@ -63,8 +63,7 @@ public class Entrada {
     public static void mostrar() {
         try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/usuario", "root", "")) {
             try (PreparedStatement sc = connManager.prepareStatement("SELECT * FROM usuario.usuario");
-                 ResultSet rs = sc.executeQuery()) {
-
+                ResultSet rs = sc.executeQuery()) {
                 while (rs.next()) {
                     int id = rs.getInt("id");
                     String nome = rs.getString("nome");

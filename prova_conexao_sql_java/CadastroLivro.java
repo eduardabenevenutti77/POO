@@ -1,5 +1,5 @@
+package prova_conexao_sql_java;
 import java.util.ArrayList;
-
 public class CadastroLivro extends CadastrarClassificacao {
     private String tituloLivro;
     private CadastroAutor nome;

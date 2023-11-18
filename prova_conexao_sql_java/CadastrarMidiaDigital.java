@@ -1,3 +1,4 @@
+package prova_conexao_sql_java;
 import java.util.ArrayList;
 
 public class CadastrarMidiaDigital extends CadastrarClassificacao{

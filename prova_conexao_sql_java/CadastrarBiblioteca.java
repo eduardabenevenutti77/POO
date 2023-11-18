@@ -1,3 +1,8 @@
+package prova_conexao_sql_java;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CadastrarBiblioteca {
@@ -7,8 +12,6 @@ public class CadastrarBiblioteca {
     public ArrayList<CadastrarMidia> midias;
     public ArrayList<CadastrarMidiaDigital> digitais;
 
-    public static ArrayList<CadastrarBiblioteca> bibliotecas = new ArrayList<CadastrarBiblioteca>();
-
     //método construtor da classe
     public CadastrarBiblioteca(String nomeBiblioteca){
         this.nomeBiblioteca = nomeBiblioteca;
@@ -16,7 +19,17 @@ public class CadastrarBiblioteca {
         this.midias = new ArrayList<CadastrarMidia>();
         this.editoras = new ArrayList<CadastrarEditora>();
         this.digitais = new ArrayList<CadastrarMidiaDigital>();
-        bibliotecas.add(this);
+        
+        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
+            try (PreparedStatement sc = connManager.prepareStatement("INSERT INTO prova_java_sql.cadastrarbiblioteca VALUES (?, ?)")){ 
+                sc.setLong(1, 0); 
+                sc.setString(2, this.nomeBiblioteca);
+                sc.executeUpdate();
+                System.out.println("Usuário cadastrado com sucesso!");
+            }
+        } catch (SQLException exception) {
+            System.out.println("Erro ao cadastrar usuário: " + exception.getMessage());
+        }
     }
     //agrupamento de set's e get's 
     public void setNomeBiblioteca(String nomeBiblioteca){
@@ -36,10 +49,6 @@ public class CadastrarBiblioteca {
     }
     public String getDigital(){
         return this.getDigital();
-    }
-    //get para pegar a lista de bibliotecas
-    public static ArrayList<CadastrarBiblioteca> getBibliotecas() {
-        return bibliotecas;
     }
     //incluido livro, mídia e mídia digital
      public void incluirLivro(CadastroLivro livro) {

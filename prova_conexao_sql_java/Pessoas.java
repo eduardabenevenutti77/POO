@@ -1,3 +1,4 @@
+package prova_conexao_sql_java;
 public class Pessoas {
     protected String nome;
 

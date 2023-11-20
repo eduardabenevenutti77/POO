@@ -69,6 +69,8 @@ public class Main {
                     } while (acharPosicaoAutor < 0);
 
                     CadastroAutor autorSelecionado = CadastroAutor.nomeAutores.get(acharPosicaoAutor);
+                    CadastroAutor novoAutor = new CadastroAutor(nomeAutor, email, nacionalidade);
+                    CadastroAutor.CadastroAutor();
 
                     
                     System.out.println("\nInforme o nome da editora = ");
@@ -78,7 +80,7 @@ public class Main {
                     System.out.println("Informe o CNPJ da editora = ");
                     int cnpj = sc.nextInt(); 
                     CadastrarEditora novaEditora = new CadastrarEditora(cnpj, nomeEditora, emailEditora);
-                    CadastrarEditora.editoras.add(novaEditora);  
+                    CadastrarEditora.CadastrarEditora();  
 
                     
                     System.out.println("\nInforme o número do INSS");
@@ -93,7 +95,7 @@ public class Main {
 
                     
                     CadastroLivro novoLivro = new CadastroLivro(tituloLivro, autorSelecionado, true, numeroINSS, classificacao);
-                    CadastroLivro.livros.add(novoLivro);  
+                    CadastroLivro.CadastroLivro();  
 
                 break;
             

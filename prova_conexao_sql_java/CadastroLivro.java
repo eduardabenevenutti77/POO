@@ -19,7 +19,6 @@ public class CadastroLivro extends CadastrarClassificacao {
         this.numeroINNS = numeroINNS;
         this.disponibilidade = disponibilidade;
         
-
         try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
             try (PreparedStatement sc = connManager.prepareStatement("INSERT INTO prova_java_sql.cadastrarlivro VALUES (?, ?, ?, ?)")){ 
                 sc.setLong(1, 0); 
@@ -34,27 +33,15 @@ public class CadastroLivro extends CadastrarClassificacao {
         }
 
         try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
-            try (PreparedStatement sc = connManager.prepareStatement("UPDATE prova_java_sql.cadastrarlivro SET tituloLivro = ?, numeroINSS = ? WHERE id_livro = ?")){ 
+            try (PreparedStatement sc = connManager.prepareStatement("SELECT * FROM prova_java_sql.cadastrarlivro")){ 
                 sc.setLong(1, 0); 
                 sc.setString(2, this.tituloLivro);
                 sc.setInt(3, this.numeroINNS);
                 sc.executeUpdate();
-                System.out.println("Livro atualizado com sucesso!");
+                System.out.println("Livro listada com sucesso!");
             }
-        } catch (SQLException exception) {
-             System.out.println("Erro ao atualizar livro: " + exception.getMessage());
-        }
-
-        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
-            try (PreparedStatement sc = connManager.prepareStatement("DELETE FROM prova_java_sql.cadastrarlivro WHERE id_livro = ?")){ 
-                sc.setLong(1, 0); 
-                sc.setString(2, this.tituloLivro);
-                sc.setInt(3, this.numeroINNS);
-                sc.executeUpdate();
-                System.out.println("Livro excluida com sucesso!");
-            }
-        } catch (SQLException exception) {
-             System.out.println("Erro ao excluir livro: " + exception.getMessage());
+        }catch (SQLException exception){
+            System.out.println("Erro ao listar livro: "+exception.getMessage());
         }
     }
     //agrupamento de set's e get's

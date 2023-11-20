@@ -27,30 +27,17 @@ public class CadastroAutor extends Pessoas{
             System.out.println("Erro ao cadastrar usuário: " + exception.getMessage());
         }
 
-        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
-            try (PreparedStatement sc = connManager.prepareStatement("UPDATE prova_java_sql.cadastrarautor SET nome_autor = ?, email = ?, nacionalidade = ? WHERE idAutor = ?")){ 
+        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")){
+            try (PreparedStatement sc = connManager.prepareStatement("SELECT * FROM prova_java_sql.cadastrarautor")){
                 sc.setLong(1, 0); 
                 sc.setString(2, this.nome);
                 sc.setString(3, this.email);
                 sc.setString(4, this.nacionalidade);
                 sc.executeUpdate();
-                System.out.println("Autor atualizado com sucesso!");
+                System.out.println("Autor listada com sucesso!");
             }
-        } catch (SQLException exception) {
-             System.out.println("Erro ao atualizar autor: " + exception.getMessage());
-        }
-
-        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
-            try (PreparedStatement sc = connManager.prepareStatement("DELETE FROM prova_java_sql.cadastrarautor WHERE idAutor = ?")){ 
-                sc.setLong(1, 0); 
-                sc.setString(2, this.nome);
-                sc.setString(3, this.email);
-                sc.setString(4, this.nacionalidade);
-                sc.executeUpdate();
-                System.out.println("Autor excluida com sucesso!");
-            }
-        } catch (SQLException exception) {
-             System.out.println("Erro ao excluir autor: " + exception.getMessage());
+        }catch (SQLException exception){
+            System.out.println("Erro ao listar autor: "+exception.getMessage());
         }
     }
     //agrupamento de set's e get's 

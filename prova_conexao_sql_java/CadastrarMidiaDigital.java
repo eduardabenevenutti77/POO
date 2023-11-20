@@ -30,35 +30,21 @@ public class CadastrarMidiaDigital extends CadastrarClassificacao{
             }
         } catch (SQLException exception) {
             System.out.println("Erro ao cadastrar mídia digital: " + exception.getMessage());
-        }
-
-        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
-          try (PreparedStatement sc = connManager.prepareStatement("UPDATE prova_java_sql.cadastrarmidiadigital SET nomeAlbum = ?, nomeCantor = ?, data_lancamento = ?, disponibilidade = ? WHERE id_midia_digital = ?")){ 
-              sc.setLong(1, 0); 
-              sc.setString(2, this.nomeAlbum);
-              sc.setString(3, this.nomeCantor);
-              sc.setString(4, this.data_lancamento);
-              sc.setBoolean(5, this.disponibilidade);
-              sc.executeUpdate();
-              System.out.println("Mídia Digital atualizado com sucesso!");
-          }
-      } catch (SQLException exception) {
-           System.out.println("Erro ao atualizar mídia digital: " + exception.getMessage());
       }
 
       try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
-        try (PreparedStatement sc = connManager.prepareStatement("DELETE FROM prova_java_sql.cadastrarmidiadigital WHERE id_midia_digital = ?")){ 
-            sc.setLong(1, 0); 
-            sc.setString(2, this.nomeAlbum);
-            sc.setString(3, this.nomeCantor);
-            sc.setString(4, this.data_lancamento);
-            sc.setBoolean(5, this.disponibilidade);
-            sc.executeUpdate();
-            System.out.println("Mídia Digital excluida com sucesso!");
+        try (PreparedStatement sc = connManager.prepareStatement("SELECT * FROM prova_java_sql.cadastrmidiadigital")){ 
+          sc.setLong(1, 0); 
+          sc.setString(2, this.nomeAlbum);
+          sc.setString(3, this.nomeCantor);
+          sc.setString(4, this.data_lancamento);
+          sc.setBoolean(5, this.disponibilidade);
+          sc.executeUpdate();
+          System.out.println("Mídia Digital listada com sucesso!");
         }
-    } catch (SQLException exception) {
-         System.out.println("Erro ao excluir mídia digital: " + exception.getMessage());
-    }
+      }catch (SQLException exception){
+        System.out.println("Erro ao listar mídia digital: "+exception.getMessage());
+      }
   }
   //agrupamento de set's e get's
   public void setAlbum(String nomeAlbum){

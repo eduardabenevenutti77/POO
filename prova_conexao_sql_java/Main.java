@@ -16,11 +16,10 @@ public class Main {
                 System.out.println("| \t\u001B[36m01\u001B[0m - Cadastrar Autor                               |");
                 System.out.println("| \t\u001B[36m02\u001B[0m - Cadastrar Livro                               |");
                 System.out.println("| \t\u001B[36m03\u001B[0m - Cadastrar Biblioteca                          |");
-                System.out.println("| \t\u001B[36m04\u001B[0m - Cadastrar Mídia                               |");
-                System.out.println("| \t\u001B[36m05\u001B[0m - Cadastrar Mídia Digital                       |");
-                System.out.println("| \t\u001B[36m06\u001B[0m - Incluir Livro/Mídia/Midia D. na Biblioteca    |");
-                System.out.println("| \t\u001B[36m07\u001B[0m - Emprestar Livro/Mídia/Mídia Digital           |");
-                System.out.println("| \t\u001B[36m08\u001B[0m - Devolver Livro/Mídia/Mídia Digital            |");
+                System.out.println("| \t\u001B[36m04\u001B[0m - Cadastrar Mídia Digital                       |");
+                System.out.println("| \t\u001B[36m06\u001B[0m - Incluir Livro/Midia D. na Biblioteca    |");
+                System.out.println("| \t\u001B[36m07\u001B[0m - Emprestar Livro/Mídia Digital           |");
+                System.out.println("| \t\u001B[36m08\u001B[0m - Devolver Livro/Mídia Digital            |");
                 System.out.println("# -------------------------------------------------------- #");
 
                 try {

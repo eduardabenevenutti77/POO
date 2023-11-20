@@ -22,26 +22,15 @@ public class CadastrarBiblioteca {
             System.out.println("Erro ao cadastrar biblioteca: " + exception.getMessage());
         }
 
-        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
-            try (PreparedStatement sc = connManager.prepareStatement("UPDATE prova_java_sql.cadastrarbiblioteca SET nome_biblioteca = ? WHERE id_biblioteca = ?")){ 
+        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")){
+            try (PreparedStatement sc = connManager.prepareStatement("SELECT * FROM prova_java_sql.cadastrarbiblioteca")){
                 sc.setLong(1, 0); 
                 sc.setString(2, this.nomeBiblioteca);
                 sc.executeUpdate();
-                System.out.println("Biblioteca atualizada com sucesso!");
+                System.out.println("Biblioteca listada com sucesso!");
             }
-        } catch (SQLException exception) {
-             System.out.println("Erro ao atualizar biblioteca: " + exception.getMessage());
-        }
-
-        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
-            try (PreparedStatement sc = connManager.prepareStatement("DELETE FROM prova_java_sql.cadastrarbiblioteca WHERE id_biblioteca = ?")){ 
-                sc.setLong(1, 0); 
-                sc.setString(2, this.nomeBiblioteca);
-                sc.executeUpdate();
-                System.out.println("Biblioteca excluida com sucesso!");
-            }
-        } catch (SQLException exception) {
-             System.out.println("Erro ao excluir biblioteca: " + exception.getMessage());
+        }catch (SQLException exception){
+            System.out.println("Erro ao listar biblioteca: "+exception.getMessage());
         }
     }
     //agrupamento de set's e get's 

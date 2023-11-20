@@ -32,6 +32,19 @@ public class CadastroLivro extends CadastrarClassificacao {
         } catch (SQLException exception) {
              System.out.println("Erro ao cadastrar livro: " + exception.getMessage());
         }
+
+        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
+            try (PreparedStatement sc = connManager.prepareStatement("UPDATE prova_java_sql.cadastrarlivro SET  WHERE id_livro = ?")){ 
+                sc.setLong(1, 0); 
+                sc.setString(2, this.tituloLivro);
+                sc.setInt(3, this.numeroINNS);
+                sc.setBoolean(4, this.disponibilidade);
+                sc.executeUpdate();
+                System.out.println("Livro cadastrado com sucesso!");
+            }
+        } catch (SQLException exception) {
+             System.out.println("Erro ao cadastrar livro: " + exception.getMessage());
+        }
     }
     //agrupamento de set's e get's
     public void setTitulo(String tituloLivro) {

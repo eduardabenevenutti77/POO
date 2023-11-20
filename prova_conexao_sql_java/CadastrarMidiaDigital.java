@@ -1,13 +1,14 @@
 package prova_conexao_sql_java;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class CadastrarMidiaDigital extends CadastrarClassificacao{
   private String nomeAlbum;
   private String nomeCantor;
   private String data_lancamento;
   private boolean disponibilidade;
-
-  public static ArrayList<CadastrarMidiaDigital> digitais = new ArrayList<CadastrarMidiaDigital>();
   
   //método construtor da classe filho
   public CadastrarMidiaDigital(String nomeAlbum, String nomeCantor, String data_lancamento, boolean disponibilidade, String classificacao){
@@ -17,7 +18,19 @@ public class CadastrarMidiaDigital extends CadastrarClassificacao{
     this.nomeCantor = nomeCantor;
     this.disponibilidade = disponibilidade;
 
-    digitais.add(this);
+     try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
+            try (PreparedStatement sc = connManager.prepareStatement("INSERT INTO prova_java_sql.cadastrarmidiadigital VALUES (?, ?, ?, ?, ?)")){ 
+                sc.setLong(1, 0); 
+                sc.setString(2, this.nomeAlbum);
+                sc.setString(3, this.nomeCantor);
+                sc.setString(4, this.data_lancamento);
+                sc.setBoolean(5, this.disponibilidade);
+                sc.executeUpdate();
+                System.out.println("Mídia Digital cadastrada com sucesso!");
+            }
+        } catch (SQLException exception) {
+            System.out.println("Erro ao cadastrar mídia digital: " + exception.getMessage());
+        }
   }
   //agrupamento de set's e get's
   public void setAlbum(String nomeAlbum){

@@ -12,15 +12,15 @@ public class CadastrarClassificacao {
         this.classificacao = classificacao;
         
         try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
-            try (PreparedStatement sc = connManager.prepareStatement("INSERT INTO prova_java_sql.cadastrarclassificacao VALUES (?, ?, ?, ?)")){ 
+            try (PreparedStatement sc = connManager.prepareStatement("INSERT INTO prova_java_sql.cadastrarclassificacao VALUES (?, ?)")){ 
                 sc.setLong(1, 0); 
                 sc.setString(2, this.classificacao);
                 sc.executeUpdate();
-                System.out.println("Usuário cadastrado com sucesso!");
+                System.out.println("Classificação cadastrada com sucesso!");
             }
         } catch (SQLException exception) {
-    System.out.println("Erro ao cadastrar usuário: " + exception.getMessage());
-}
+            System.out.println("Erro ao cadastrar classificação: " + exception.getMessage());
+        }
     }
     //agrupamento de set's e get's
     public void setClassificacao(String classificacao){

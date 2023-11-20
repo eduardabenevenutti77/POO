@@ -14,8 +14,8 @@ public class CadastroAutor extends Pessoas{
         this.email = email;
         this.nacionalidade = nacionalidade;
         
-        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/usuario", "root", "")) {
-            try (PreparedStatement sc = connManager.prepareStatement("INSERT INTO usuario.usuario VALUES (?, ?, ?, ?)")){ 
+        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
+            try (PreparedStatement sc = connManager.prepareStatement("INSERT INTO prova_java_sql.cadastrarautor VALUES (?, ?, ?, ?)")){ 
                 sc.setLong(1, 0); 
                 sc.setString(2, this.nome);
                 sc.setString(3, this.email);

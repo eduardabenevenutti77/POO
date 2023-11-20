@@ -24,6 +24,29 @@ public class CadastrarEditora extends Empresa {
         } catch (SQLException exception) {
             System.out.println("Erro ao cadastrar editora: " + exception.getMessage());
         }
+
+        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
+            try (PreparedStatement sc = connManager.prepareStatement("UPDATE prova_java_sql.cadastrareditora SET nome_editora = ? WHERE id_editora = ?")){ 
+                sc.setLong(1, 0); 
+                sc.setString(2, this.email_contato);
+                sc.executeUpdate();
+                System.out.println("Editora atualizado com sucesso!");
+            }
+        } catch (SQLException exception) {
+             System.out.println("Erro ao atualizar autor: " + exception.getMessage());
+        }
+
+        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
+            try (PreparedStatement sc = connManager.prepareStatement("DELETE FROM prova_java_sql.cadastrareditora WHERE id_editora = ?")){ 
+                sc.setLong(1, 0); 
+                sc.setString(2, this.email_contato);
+                sc.executeUpdate();
+                System.out.println("Editora excluida com sucesso!");
+            }
+        } catch (SQLException exception) {
+             System.out.println("Erro ao excluir editora: " + exception.getMessage());
+        }
+
     }
     //criação do método set e get
     public void setEmail_contato(String email_contrato){

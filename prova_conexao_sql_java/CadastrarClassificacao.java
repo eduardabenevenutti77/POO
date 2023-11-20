@@ -21,6 +21,28 @@ public class CadastrarClassificacao {
         } catch (SQLException exception) {
             System.out.println("Erro ao cadastrar classificação: " + exception.getMessage());
         }
+
+        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
+            try (PreparedStatement sc = connManager.prepareStatement("UPDATE prova_java_sql.cadastrarclassificacao SET classificacao = ? WHERE id_classifi = ?")){ 
+                sc.setLong(1, 0); 
+                sc.setString(2, this.classificacao);
+                sc.executeUpdate();
+                System.out.println("Classificação atualizado com sucesso!");
+            }
+        } catch (SQLException exception) {
+             System.out.println("Erro ao atualizar classificação: " + exception.getMessage());
+        }
+
+        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
+            try (PreparedStatement sc = connManager.prepareStatement("DELETE FROM prova_java_sql.cadastrarclassificacao WHERE id_classifi = ?")){ 
+                sc.setLong(1, 0); 
+                sc.setString(2, this.classificacao);
+                sc.executeUpdate();
+                System.out.println("Classificação excluida com sucesso!");
+            }
+        } catch (SQLException exception) {
+             System.out.println("Erro ao excluir classificação: " + exception.getMessage());
+        }
     }
     //agrupamento de set's e get's
     public void setClassificacao(String classificacao){

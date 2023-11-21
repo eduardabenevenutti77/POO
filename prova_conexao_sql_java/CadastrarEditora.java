@@ -33,8 +33,8 @@ public class CadastrarEditora extends Empresa {
             try(ResultSet ra = sc.executeQuery()){
                 if(ra.next()){
                     long id = ra.getLong(0);
-                    String classificacao = ra.getString(1);
-                    System.out.println("ID: "+id+"\n Nome da Editora: "+classificacao);
+                    String nome_editora = ra.getString(1);
+                    System.out.println("ID: "+id+"\n Nome da Editora: "+nome_editora);
                 }
             }
         }

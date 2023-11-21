@@ -2,6 +2,7 @@ package prova_conexao_sql_java;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CadastrarMidiaDigital extends CadastrarClassificacao{
@@ -31,20 +32,25 @@ public class CadastrarMidiaDigital extends CadastrarClassificacao{
         } catch (SQLException exception) {
             System.out.println("Erro ao cadastrar mídia digital: " + exception.getMessage());
       }
+  }
 
-      try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
-        try (PreparedStatement sc = connManager.prepareStatement("SELECT * FROM prova_java_sql.cadastrmidiadigital")){ 
-          sc.setLong(1, 0); 
-          sc.setString(2, this.nomeAlbum);
-          sc.setString(3, this.nomeCantor);
-          sc.setString(4, this.data_lancamento);
-          sc.setBoolean(5, this.disponibilidade);
-          sc.executeUpdate();
-          System.out.println("Mídia Digital listada com sucesso!");
+  public static void listarMidiaDigital(){
+    try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")){
+        try (PreparedStatement sc = connManager.prepareStatement("SELECT id_midia_digital, nomeAlbum, nomeCantor, data_lacamento, disponibilidade FROM prova_java_sql.cadastrarmidiadigital")){
+            try(ResultSet ra = sc.executeQuery()){
+                if(ra.next()){
+                    long id = ra.getLong(0);
+                    String nome_album = ra.getString(1);
+                    String nome_cantor = ra.getString(2);
+                    String data_lacamento = ra.getString(3);
+                    String disponibilidade = ra.getString(4);
+                    System.out.println("ID: "+id+"\n Nome do Album: "+nome_album+"\n Nome do Cantor: "+nome_cantor+"\n Data de Lançamento: "+data_lacamento+"\n Disponibilidade: "+disponibilidade);
+                }
+            }
         }
-      }catch (SQLException exception){
+    }catch (SQLException exception){
         System.out.println("Erro ao listar mídia digital: "+exception.getMessage());
-      }
+    }
   }
   //agrupamento de set's e get's
   public void setAlbum(String nomeAlbum){

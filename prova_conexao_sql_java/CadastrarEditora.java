@@ -3,6 +3,7 @@ package prova_conexao_sql_java;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CadastrarEditora extends Empresa {
@@ -24,17 +25,22 @@ public class CadastrarEditora extends Empresa {
         } catch (SQLException exception) {
             System.out.println("Erro ao cadastrar editora: " + exception.getMessage());
         }
+    }
 
-        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")){
-            try (PreparedStatement sc = connManager.prepareStatement("SELECT * FROM prova_java_sql.cadastrareditora")){
-                sc.setLong(1, 0); 
-                sc.setString(2, this.email_contato);
-                sc.executeUpdate();
-                System.out.println("Editora listada com sucesso!");
+    public static void listarEditora(){
+    try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")){
+        try (PreparedStatement sc = connManager.prepareStatement("SELECT id_editora, nome_editora FROM prova_java_sql.cadastrareditora")){
+            try(ResultSet ra = sc.executeQuery()){
+                if(ra.next()){
+                    long id = ra.getLong(0);
+                    String classificacao = ra.getString(1);
+                    System.out.println("ID: "+id+"\n Nome da Editora: "+classificacao);
+                }
             }
-        }catch (SQLException exception){
-            System.out.println("Erro ao listar editora: "+exception.getMessage());
         }
+    }catch (SQLException exception){
+        System.out.println("Erro ao listar editoras: "+exception.getMessage());
+    }
     }
     //criação do método set e get
     public void setEmail_contato(String email_contrato){

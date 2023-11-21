@@ -2,6 +2,7 @@ package prova_conexao_sql_java;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CadastroLivro extends CadastrarClassificacao {
@@ -31,18 +32,27 @@ public class CadastroLivro extends CadastrarClassificacao {
         } catch (SQLException exception) {
              System.out.println("Erro ao cadastrar livro: " + exception.getMessage());
         }
+    }
 
-        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")) {
-            try (PreparedStatement sc = connManager.prepareStatement("SELECT * FROM prova_java_sql.cadastrarlivro")){ 
-                sc.setLong(1, 0); 
-                sc.setString(2, this.tituloLivro);
-                sc.setInt(3, this.numeroINNS);
-                sc.executeUpdate();
-                System.out.println("Livro listada com sucesso!");
-            }
-        }catch (SQLException exception){
-            System.out.println("Erro ao listar livro: "+exception.getMessage());
-        }
+    public static void listarLivro(){
+  try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")){
+      try (PreparedStatement sc = connManager.prepareStatement("SELECT id_livro, tituloLivro, numeroINNS, id_editora, idAutor, id_biblioteca, id_classifi FROM prova_java_sql.cadastrarlivro")){ 
+          try(ResultSet ra = sc.executeQuery()){
+              if(ra.next()){
+                  long id = ra.getLong(0);
+                  String titulo = ra.getString(1);
+                  Integer numero = ra.getInt(2);
+                  Integer id_editora = ra.getInt(3);
+                  Integer idAutor = ra.getInt(4);
+                  Integer id_biblioteca = ra.getInt(5);
+                  Integer id_classifi = ra.getInt(6);
+                  System.out.println("ID: "+id+"\n Título do Livro: "+titulo+"\n Número do Livro: "+numero+"\n ID Editora: "+id_editora+"\n ID Autor: "+idAutor+"\n ID Biblioteca"+id_biblioteca+"\nID Classificação: "+id_classifi);
+              }
+          }
+      }
+    }catch (SQLException exception){
+        System.out.println("Erro ao listar mídia digital: "+exception.getMessage());
+    }
     }
     //agrupamento de set's e get's
     public void setTitulo(String tituloLivro) {

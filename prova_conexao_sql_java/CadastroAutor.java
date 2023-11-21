@@ -2,6 +2,7 @@ package prova_conexao_sql_java;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CadastroAutor extends Pessoas{
@@ -26,20 +27,25 @@ public class CadastroAutor extends Pessoas{
         } catch (SQLException exception) {
             System.out.println("Erro ao cadastrar usuário: " + exception.getMessage());
         }
-
-        try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")){
-            try (PreparedStatement sc = connManager.prepareStatement("SELECT * FROM prova_java_sql.cadastrarautor")){
-                sc.setLong(1, 0); 
-                sc.setString(2, this.nome);
-                sc.setString(3, this.email);
-                sc.setString(4, this.nacionalidade);
-                sc.executeUpdate();
-                System.out.println("Autor listada com sucesso!");
-            }
-        }catch (SQLException exception){
-            System.out.println("Erro ao listar autor: "+exception.getMessage());
-        }
     }
+
+     public static void listarAutor(){
+     try (Connection connManager = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova_java_sql", "root", "")){
+         try (PreparedStatement sc = connManager.prepareStatement("SELECT idAutor, nome_autor, email, nacionalidade FROM prova_java_sql.cadastrarautor")){
+             try(ResultSet ra = sc.executeQuery()){
+                 if(ra.next()){
+                     long id = ra.getLong(0);
+                     String nome = ra.getString(1);
+                     String email = ra.getString(2);
+                     String nacionalidade = ra.getString(3);
+                     System.out.println("ID: "+id+"\n Nome do autor: "+nome+"\nE-mail do autor: "+email+"\nNacionalidade do autor: "+nacionalidade);
+                 }
+             }
+         }
+     }catch (SQLException exception){
+         System.out.println("Erro ao listar autores: "+exception.getMessage());
+        }
+     }
     //agrupamento de set's e get's 
     public void setNacionalidade(String nacionalidade){
         this.nacionalidade = nacionalidade;
